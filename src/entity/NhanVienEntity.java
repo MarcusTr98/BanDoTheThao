@@ -3,8 +3,7 @@ package entity;
 import java.util.Date;
 
 public class NhanVienEntity {
-    private int ID; // tự sinh trong sql
-    private String maNV;
+    private int maNV; // tự sinh trong sql
     private String tenNV;
     private boolean gioiTinh; //mặc định là nam
     private String diaChi;
@@ -13,8 +12,7 @@ public class NhanVienEntity {
     private String matKhau;
     private boolean vaiTro = false; //mặc định là nhân viên
 
-    public NhanVienEntity(int ID, String maNV, String tenNV, boolean gioiTinh, String diaChi, String sdt, Date ngaySinh, String matKhau) {
-        this.ID = ID;
+    public NhanVienEntity(int maNV, String tenNV, boolean gioiTinh, String diaChi, String sdt, Date ngaySinh, String matKhau) {
         this.maNV = maNV;
         this.tenNV = tenNV;
         this.gioiTinh = gioiTinh;
@@ -27,19 +25,11 @@ public class NhanVienEntity {
     public NhanVienEntity() {
     }
 
-    public int getID() {
-        return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
-    }
-
-    public String getMaNV() {
+    public int getMaNV() {
         return maNV;
     }
 
-    public void setMaNV(String maNV) {
+    public void setMaNV(int maNV) {
         this.maNV = maNV;
     }
 
