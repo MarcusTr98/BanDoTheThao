@@ -2,25 +2,49 @@ package utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class ConnectDB {
 
-    public static Connection con = null;
+    String strDbUrl = "jdbc:sqlserver://localhost;" + "databaseName=BanDoTheThao;user=sa;password=123;";
+    Connection conn;
 
-    public static Connection getConnect() {
-        String strDbUrl = "jdbc:sqlserver://localhost:1433; databaseName=BanDoTheThao;user=sa;password=123;"
-                + "encrypt=true;trustServerCertificate=true";
+    public ConnectDB() {
+
         try {
-            con = DriverManager.getConnection(strDbUrl);
-            System.out.println("Ket noi thanh cong!");
-        } catch (SQLException e) {
-            System.out.println("Disconnect " + e);
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            conn = DriverManager.getConnection(strDbUrl);
+
+        } catch (ClassNotFoundException ex) {
+            System.out.println(ex.toString());
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
         }
-        return con;
     }
 
-    public static void main(String[] args) {
-        ConnectDB.getConnect();
+    //Thực thi câu lệnh SELECT
+    public ResultSet ExcuteQueryGetTable(String cauTruyVanSQL) {
+        try {
+            Statement sta = conn.createStatement();
+            ResultSet result = sta.executeQuery(cauTruyVanSQL);
+            return result;
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+        }
+        return null;
     }
+
+    //Thực thi INSERT, DELETE, UPDATE
+    public void ExcuteQueryUpdateDB(String cauTruyVanSQL) {
+
+        try {
+            Statement sta = conn.createStatement();
+            sta.executeUpdate(cauTruyVanSQL);
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+        }
+    }
+
 }
