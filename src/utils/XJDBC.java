@@ -5,10 +5,10 @@ import java.sql.*;
 public class XJDBC {
 
     private static String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-    private static String dburl = "jdbc:sqlserver://localhost;database=QuanLyBanHang";
+    private static String dburl = "jdbc:sqlserver://localhost:1433;encrypt=false;trustServerCertificate=true;database=BanDoTheThao";
     private static String username = "sa";
-    private static String password = "minhhieu21";
-    public static utils.ConnectDB connection = new utils.ConnectDB();
+    private static String password = "123";
+//    public static utils.ConnectDB connection = new utils.ConnectDB();
 
     static {
         try {
