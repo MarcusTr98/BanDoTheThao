@@ -5,21 +5,22 @@ import java.util.Date;
 public class HoaDonEntity {
 
     private String maHDBan;
-    private String maNV;
+    private int maNV;
     private Date ngayBan;
     private int maKH;
     private boolean tinhTrang_ThanhToan;
 
-    public HoaDonEntity(String maHDBan, String maNV, Date ngayBan, int maKH, boolean tinhTrang_ThanhToan) {
+    public HoaDonEntity(String maHDBan, int maNV, Date ngayBan, int maKH, boolean tinhTrang_ThanhToan) {
         this.maHDBan = maHDBan;
         this.maNV = maNV;
         this.ngayBan = ngayBan;
         this.maKH = maKH;
         this.tinhTrang_ThanhToan = tinhTrang_ThanhToan;
     }
-
-    public HoaDonEntity() {
-    }
+    
+ public HoaDonEntity(){
+     
+ }
 
     public String getMaHDBan() {
         return maHDBan;
@@ -29,11 +30,11 @@ public class HoaDonEntity {
         this.maHDBan = maHDBan;
     }
 
-    public String getMaNV() {
+    public int getMaNV() {
         return maNV;
     }
 
-    public void setMaNV(String maNV) {
+    public void setMaNV(int maNV) {
         this.maNV = maNV;
     }
 
@@ -60,6 +61,6 @@ public class HoaDonEntity {
     public void setTinhTrang_ThanhToan(boolean tinhTrang_ThanhToan) {
         this.tinhTrang_ThanhToan = tinhTrang_ThanhToan;
     }
-
+ 
     
 }
