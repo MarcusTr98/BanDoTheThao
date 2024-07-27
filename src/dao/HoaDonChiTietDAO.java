@@ -18,9 +18,11 @@ import utils.XJDBC;
 public class HoaDonChiTietDAO {
         String selectAll="select MaHDCT,MaHDBan,hdct.maSP,sp.TenSP,hdct.soLuong,giamGia,((hdct.soLuong*sp.GiaBan)-GiamGia) as ThanhTien\n" +
 "from hoaDonChiTiet hdct inner join sanpham sp on sp.maSP=hdct.maSP";
-    String insert="insertt into HoaDonChiTiet values (?,?,?,?,?,?)";
-    String update="update HoaDonChiTiet MaHDBan=?,MaSP=?,SoLuong=?,GiamGia=?,thanhTien=? where MaHDCT=?";
-    String delete ="delete from HoaDon where MaHDCT=?";
+        String selectById="select MaHDCT,MaHDBan,hdct.maSP,sp.TenSP,hdct.soLuong,giamGia,((hdct.soLuong*sp.GiaBan)-GiamGia) as ThanhTien\n" +
+"from hoaDonChiTiet hdct inner join sanpham sp on sp.maSP=hdct.maSP WHERE MaHDCT=?";
+    String insert="insert into HoaDonChiTiet (MaHDBan,MaSP,soLuong,giamGia) values (?,?,?,?)";
+    String update="update HoaDonChiTiet set MaHDBan=?,MaSP=?,SoLuong=?,GiamGia=? where MaHDCT=?";
+    String delete ="delete from HoaDonChiTiet where MaHDCT=?";
     public List<HoaDonChiTietEntity> selectBySql(String sql,Object...args){
         List<HoaDonChiTietEntity> list= new ArrayList<>();
         try {
@@ -45,13 +47,33 @@ public class HoaDonChiTietDAO {
     public List<HoaDonChiTietEntity> selectAll(){
         return this.selectBySql(selectAll);
     }
+    public HoaDonChiTietEntity selectById(int maHDCT){
+        List<HoaDonChiTietEntity> list= this.selectBySql(selectById, maHDCT );
+        return list.get(0);
+    }
     public void insert (HoaDonChiTietEntity hdct){
-       XJDBC.update(insert,hdct.getMaHDCT(),hdct.getMaHDBan() );
+        try {
+                   XJDBC.update(insert,hdct.getMaHDBan(),hdct.getMaSP(),hdct.getSoLuong(),hdct.getGiamGia() );
+                   System.out.println("insert thanh cong");
+        } catch (Exception e) {
+            System.out.println("insert that bai"+e);
+        }
     }
-    public void update(HoaDonEntity hd){
-        XJDBC.update(update,hd.getMaNV(),hd.getNgayBan(),hd.getMaKH(),hd.isTinhTrang_ThanhToan(), hd.getMaHDBan());
+    public void update(HoaDonChiTietEntity hdct){
+        try {
+                    XJDBC.update(update,hdct.getMaHDBan(),hdct.getMaSP(),hdct.getSoLuong(),
+                            hdct.getGiamGia(),hdct.getMaHDCT());
+                    System.out.println("update thanh cong");
+        } catch (Exception e) {
+            System.out.println("update that bai"+e);
+        }
     }
-    public void delete(String maHDCT){
-        XJDBC.update(delete, maHDCT);
+    public void delete(int maHDCT){
+        try {
+                    XJDBC.update(delete, maHDCT);
+                    System.out.println("delete thanh cong");
+        } catch (Exception e) {
+            System.out.println("delete that bai"+e);
+        }
     }
 }
