@@ -68,4 +68,60 @@ public class HoaDonDAO {
             System.out.println("delete that bai"+e);
         }
     }
+    // Lấy ra năm bán hàng
+       public List<Integer> nam(){
+        String sql="select distinct year(NgayBan) as year from HoaDon order by year desc" ;
+         List<Integer> list =new ArrayList<>();
+         try {
+             ResultSet result=XJDBC.query(sql);
+             while(result.next()){
+                 list.add(result.getInt(1));
+             }
+         } catch (SQLException e) {
+             System.out.println("Lấy năm không thành công"+e);
+         }
+         return list;
+     }
+       // Lấy tổng số hóa đơn
+    public Integer soHD(){
+        String sql="select count(MaHDBan) from HoaDon" ;
+         Integer count=null;
+         try {
+             ResultSet result=XJDBC.query(sql);
+             while(result.next()){
+               count= result.getInt(1);
+             }
+         } catch (SQLException e) {
+             System.out.println("Lấy năm không thành công"+e);
+         }
+         return count;
+    }
+    // Số đơn trong ngày hôm nay
+        public Integer HDDAY(){
+        String sql="select count(MaHDBan) from HoaDon where DAY(NgayBan)=GETDATE()" ;
+         Integer count=null;
+         try {
+             ResultSet result=XJDBC.query(sql);
+             while(result.next()){
+               count= result.getInt(1);// lấy bắt đầu từ số đầu tiên
+             }
+         } catch (SQLException e) {
+             System.out.println("Lấy năm không thành công"+e);
+         }
+         return count;
+    }
+        // Số đơn trong tháng
+             public Integer HDMONTH(){
+        String sql="select count(MaHDBan) from HoaDon where MONTH(NgayBan)=MONTH(GETDATE()) " ;
+         Integer count=null;
+         try {
+             ResultSet result=XJDBC.query(sql);
+             while(result.next()){
+               count= result.getInt(1);
+             }
+         } catch (SQLException e) {
+             System.out.println("Lấy năm không thành công"+e);
+         }
+         return count;
+    }
 }

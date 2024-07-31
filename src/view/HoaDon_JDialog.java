@@ -52,20 +52,25 @@ public HoaDonEntity getFormHoaDon(){
     int maNV=Integer.parseInt(txtMaNV.getText());
     Date date=XDate.toDate(txtNgayBan.getText() ,"yyyy-MM-dd" );
     int maKH=Integer.parseInt(txtMaKH.getText());
-//    boolean tinhTrang_ThanhToan=rdoDaThanhToan.isSelected();
-   HoaDonEntity hd = new HoaDonEntity(maHD, maNV, date, maKH, rootPaneCheckingEnabled);
+    boolean tinhTrang_ThanhToan=rdoThanhToan.isSelected();
+   HoaDonEntity hd = new HoaDonEntity(maHD, maNV, date, maKH, tinhTrang_ThanhToan);
     return hd;
 }
 public void setFormHoaDon(HoaDonEntity hd){
+    NhanVienEntity nv = new NhanVienEntity();
+    KhachHangEntity kh= new KhachHangEntity();
     txtMaHD.setText(hd.getMaHDBan());
     txtMaNV.setText(String.valueOf(hd.getMaNV()));
     txtMaKH.setText(String.valueOf(hd.getMaKH()));
     txtNgayBan.setText(String.valueOf(hd.getNgayBan()));
-//    if(hd.isTinhTrang_ThanhToan()==true){
-//        rdoDaThanhToan.setSelected(rootPaneCheckingEnabled);
-//    }else{
-//        rdoChuaThanhToan.setSelected(rootPaneCheckingEnabled);
-//    }
+    if(hd.isTinhTrang_ThanhToan()==true){
+        rdoThanhToan.setSelected(rootPaneCheckingEnabled);
+    }else{
+        rdoChuaThanhToan.setSelected(rootPaneCheckingEnabled);
+    }
+    txtTenNV.setText(nv.getTenNV());
+    txtTenKH.setText(kh.getTenKH());
+  
 }
 public void insert (){
     dao.insert(this.getFormHoaDon());
@@ -202,8 +207,7 @@ public void lastCT(){
         txtDiaChi = new javax.swing.JTextField();
         txtMaKH = new javax.swing.JTextField();
         txtMaNV = new javax.swing.JTextField();
-        txtNgayBan2 = new javax.swing.JTextField();
-        txtDiaChi1 = new javax.swing.JTextField();
+        txtTenNV = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jCheckBox1 = new javax.swing.JCheckBox();
         jLabel5 = new javax.swing.JLabel();
@@ -211,6 +215,8 @@ public void lastCT(){
         btnPrev = new javax.swing.JButton();
         btnNext = new javax.swing.JButton();
         btnLast = new javax.swing.JButton();
+        rdoThanhToan = new javax.swing.JRadioButton();
+        rdoChuaThanhToan = new javax.swing.JRadioButton();
         jPanel2 = new javax.swing.JPanel();
         btnThemHDCT = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
@@ -261,7 +267,7 @@ public void lastCT(){
                 {null, null, null, null, null}
             },
             new String [] {
-                "MÃ HÓA ĐƠN", "MÃ NHÂN VIÊN", "NGÀY BÁN", "MÃ KHÁCH HÀNG", "TỔNG TIỀN"
+                "MÃ HÓA ĐƠN", "MÃ NHÂN VIÊN", "NGÀY BÁN", "MÃ KHÁCH HÀNG", "THANH TOÁN"
             }
         ));
         tblHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -307,19 +313,19 @@ public void lastCT(){
             }
         });
 
+        txtTenKH.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTenKHActionPerformed(evt);
+            }
+        });
+
         txtDiaChi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDiaChiActionPerformed(evt);
             }
         });
 
-        txtDiaChi1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDiaChi1ActionPerformed(evt);
-            }
-        });
-
-        jLabel9.setText("ĐIỆN THOẠI :");
+        jLabel9.setText("TÌNH TRẠNG THANH TOÁN :");
 
         jCheckBox1.setSelected(true);
         jCheckBox1.setText("Xem tất cả hóa đơn?");
@@ -363,6 +369,17 @@ public void lastCT(){
             }
         });
 
+        buttonGroup1.add(rdoThanhToan);
+        rdoThanhToan.setText("Đã thanh toán");
+
+        buttonGroup1.add(rdoChuaThanhToan);
+        rdoChuaThanhToan.setText("Chưa thanh toán");
+        rdoChuaThanhToan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdoChuaThanhToanActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -383,7 +400,7 @@ public void lastCT(){
                                     .addComponent(txtNgayBan, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtMaHD, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtMaNV, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtNgayBan2, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(txtTenNV, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jLabel2)
                             .addComponent(jCheckBox1))
                         .addGap(35, 35, 35)
@@ -400,8 +417,11 @@ public void lastCT(){
                                     .addComponent(txtTenKH, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtMaKH, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtDiaChi1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(82, 94, Short.MAX_VALUE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(rdoThanhToan)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(rdoChuaThanhToan)))))
+                        .addGap(44, 44, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnThem)
                         .addGap(18, 18, 18)
@@ -444,9 +464,10 @@ public void lastCT(){
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(txtDiaChi1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNgayBan2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(txtTenNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(rdoThanhToan)
+                    .addComponent(rdoChuaThanhToan))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(12, 12, 12)
@@ -458,11 +479,12 @@ public void lastCT(){
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btnMoi, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(btnFirst, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnNext, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnPrev, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -607,7 +629,7 @@ public void lastCT(){
                 .addComponent(btnXoaHDCT)
                 .addGap(18, 18, 18)
                 .addComponent(btnIn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
                 .addComponent(btnFirst1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnPrev1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -717,10 +739,6 @@ public void lastCT(){
         clearForm();
     }//GEN-LAST:event_btnMoiActionPerformed
 
-    private void txtDiaChi1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDiaChi1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDiaChi1ActionPerformed
-
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox1ActionPerformed
@@ -791,6 +809,14 @@ public void lastCT(){
             this.editHDCT();
         }
     }//GEN-LAST:event_tblHoaDonChiTietMouseClicked
+
+    private void rdoChuaThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoChuaThanhToanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rdoChuaThanhToanActionPerformed
+
+    private void txtTenKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTenKHActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTenKHActionPerformed
 
     /**
      * @param args the command line arguments
@@ -873,10 +899,11 @@ public void lastCT(){
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JRadioButton rdoChuaThanhToan;
+    private javax.swing.JRadioButton rdoThanhToan;
     private javax.swing.JTable tblHoaDon;
     private javax.swing.JTable tblHoaDonChiTiet;
     private javax.swing.JTextField txtDiaChi;
-    private javax.swing.JTextField txtDiaChi1;
     private javax.swing.JTextField txtGiamGia;
     private javax.swing.JTextField txtMaHD;
     private javax.swing.JTextField txtMaHDBan;
@@ -885,9 +912,9 @@ public void lastCT(){
     private javax.swing.JTextField txtMaNV;
     private javax.swing.JTextField txtMaSP;
     private javax.swing.JTextField txtNgayBan;
-    private javax.swing.JTextField txtNgayBan2;
     private javax.swing.JTextField txtSoLuong;
     private javax.swing.JTextField txtTenKH;
+    private javax.swing.JTextField txtTenNV;
     private javax.swing.JTextField txtTenSP;
     // End of variables declaration//GEN-END:variables
 }
