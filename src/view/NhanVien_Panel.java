@@ -696,7 +696,7 @@ public class NhanVien_Panel extends javax.swing.JPanel {
                     nvDao.delete(maNV);
                     this.fillTable();
                     this.clearForm();
-                    MsgBox.showMessageDialog(this, "Xóa nhân viên thành công");
+                    MsgBox.showMessageDialog(this, "Xóa nhân viên thành công!");
                 } catch (Exception e) {
                     MsgBox.showMessageDialog(this, "Không thể xóa nhân viên!");
                 }
