@@ -3,7 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
-
+import java.util.ArrayList;
+import java.util.List;
+import beans.DanhMucBean;
+import controller.ChuyenManHinh;
+import utils.Auth;
+import utils.MsgBox;
+import utils.XImage;
 /**
  *
  * @author manht
@@ -16,6 +22,27 @@ public class Main_Frame extends javax.swing.JFrame {
     public Main_Frame() {
         initComponents();
     }
+    
+    public void chuyenManHinh(){
+        ChuyenManHinh cmh = new ChuyenManHinh(pnlView);
+        cmh.setView(pnlTrangChu, lblTrangChu);
+        
+        List<DanhMucBean> ListItem = new ArrayList<>();
+        ListItem.add(new DanhMucBean("TrangChu", pnlTrangChu, lblTrangChu));
+        ListItem.add(new DanhMucBean("SanPham", pnlSanPham, lblSanPham));
+        ListItem.add(new DanhMucBean("NhanVien", pnlNhanVien, lblNhanVien));
+        ListItem.add(new DanhMucBean("KhachHang", pnlKhachHang, lblKhachHang));
+        ListItem.add(new DanhMucBean("HoaDon", pnlHoaDon, lblHoaDon));
+        ListItem.add(new DanhMucBean("ThongKe", pnlThongKe, lblThongKe));
+        cmh.setEvent(ListItem);
+    }
+    
+    void init(){
+        setIconImage(XImage.APP_ICON);
+        setLocationRelativeTo(null);
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,13 +76,18 @@ public class Main_Frame extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         lblVaiTro = new javax.swing.JLabel();
         btnDangXuat = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        vaiTro = new javax.swing.JLabel();
+        user = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         pnlView = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("POLY STORE");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         pnlMenu.setBackground(new java.awt.Color(153, 0, 0));
 
@@ -169,6 +201,11 @@ public class Main_Frame extends javax.swing.JFrame {
         lblThongKe.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblThongKe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/thongke.png"))); // NOI18N
         lblThongKe.setText("THỐNG KÊ");
+        lblThongKe.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblThongKeMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlThongKeLayout = new javax.swing.GroupLayout(pnlThongKe);
         pnlThongKe.setLayout(pnlThongKeLayout);
@@ -192,15 +229,28 @@ public class Main_Frame extends javax.swing.JFrame {
         btnDangXuat.setBackground(new java.awt.Color(255, 153, 0));
         btnDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Log out.png"))); // NOI18N
         btnDangXuat.setText("Đăng xuất");
+
+        btnDangXuat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDangXuatMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnDangXuatMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnDangXuatMouseExited(evt);
+            }
+        });
+
         btnDangXuat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDangXuatActionPerformed(evt);
             }
         });
 
-        jLabel5.setText(" ");
+        vaiTro.setText(" ");
 
-        jLabel6.setText(" ");
+        user.setText(" ");
 
         javax.swing.GroupLayout pnlUserLayout = new javax.swing.GroupLayout(pnlUser);
         pnlUser.setLayout(pnlUserLayout);
@@ -215,8 +265,8 @@ public class Main_Frame extends javax.swing.JFrame {
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(user, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(vaiTro, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(btnDangXuat))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblUser, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -234,12 +284,12 @@ public class Main_Frame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(pnlUserLayout.createSequentialGroup()
                 .addGroup(pnlUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(user, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jLabel5))
+                    .addComponent(vaiTro))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnDangXuat)
                 .addGap(0, 15, Short.MAX_VALUE))
@@ -339,11 +389,73 @@ public class Main_Frame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        new Chao_Dialog(this, true).setVisible(true);
+        loginSuccessfull();
+    }//GEN-LAST:event_formWindowOpened
+
+    private void lblThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThongKeMouseClicked
+        this.openThongKe();
+    }//GEN-LAST:event_lblThongKeMouseClicked
+
+    private void btnDangXuatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDangXuatMouseClicked
+        
+    }//GEN-LAST:event_btnDangXuatMouseClicked
+
+    private void btnDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangXuatActionPerformed
+        if(MsgBox.showConfirmDialog(this, "Bạn có chắc muốn đăng xuất??")) {
+            this.dangXuat();
+        }
+    }//GEN-LAST:event_btnDangXuatActionPerformed
+
+    private void btnDangXuatMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDangXuatMouseExited
+        btnDangXuat.setBackground(new java.awt.Color(255,255,255));
+    }//GEN-LAST:event_btnDangXuatMouseExited
+
+    private void btnDangXuatMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDangXuatMouseEntered
+        btnDangXuat.setBackground(new java.awt.Color(249, 7, 22));
+    }//GEN-LAST:event_btnDangXuatMouseEntered
+
+     void openThongKe(){
+         if(Auth.isLogin()) {
+             if(!Auth.isManager()){
+                 MsgBox.showMessageDialog(this, "Bạn không có quyền xem thông tin doanh thu!!");
+                 return;
+             }
+             new ThongKeJDialog(this, true).setVisible(true);
+         }else{
+             MsgBox.showMessageDialog(this, "Vui lòng đăng nhập!!");
+         }
+     }
+     
+     private void loginSuccessfull(){
+         try{
+             user.setText(Auth.user.getMaNV());
+             if(Auth.user.isVaiTro() == true) {
+                 vaiTro.setText("Quản lí");
+             }else{
+                 vaiTro.setText("Nhân viên");
+             }
+         }catch(Exception e){
+             MsgBox.showMessageDialog(this, "Vui lòng đăng nhập!!");
+             this.dispose();
+         }
+     }
+     
+     void dangXuat(){
+         Auth.clear();
+         new Login_JDialog(this, true).setVisible(true);
+         loginSuccessfull();
+         this.dispose();
+     }
+
     private void btnDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangXuatActionPerformed
         // Chuyển tới DangNhap khi nhấn nút Thoát
         new DangNhap().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnDangXuatActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -386,8 +498,6 @@ public class Main_Frame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -408,5 +518,7 @@ public class Main_Frame extends javax.swing.JFrame {
     private javax.swing.JPanel pnlTrangChu;
     private javax.swing.JPanel pnlUser;
     private javax.swing.JPanel pnlView;
+    private javax.swing.JLabel user;
+    private javax.swing.JLabel vaiTro;
     // End of variables declaration//GEN-END:variables
 }
