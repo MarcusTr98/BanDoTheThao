@@ -229,6 +229,7 @@ public class Main_Frame extends javax.swing.JFrame {
         btnDangXuat.setBackground(new java.awt.Color(255, 153, 0));
         btnDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Log out.png"))); // NOI18N
         btnDangXuat.setText("Đăng xuất");
+
         btnDangXuat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnDangXuatMouseClicked(evt);
@@ -240,6 +241,7 @@ public class Main_Frame extends javax.swing.JFrame {
                 btnDangXuatMouseExited(evt);
             }
         });
+
         btnDangXuat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDangXuatActionPerformed(evt);
@@ -387,6 +389,7 @@ public class Main_Frame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         new Chao_Dialog(this, true).setVisible(true);
         loginSuccessfull();
@@ -446,6 +449,14 @@ public class Main_Frame extends javax.swing.JFrame {
          loginSuccessfull();
          this.dispose();
      }
+
+    private void btnDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangXuatActionPerformed
+        // Chuyển tới DangNhap khi nhấn nút Thoát
+        new DangNhap().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnDangXuatActionPerformed
+
+
     /**
      * @param args the command line arguments
      */

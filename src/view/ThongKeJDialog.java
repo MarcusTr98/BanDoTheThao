@@ -20,7 +20,18 @@ ThongKeDAO dao = new ThongKeDAO();
     public ThongKeJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        fillTableDoanhThu();
         fillTableSanPhamDaBan();
+        fillTableSPTonKho();
+        fillTableSanPhamDaBan2();
+    }
+     public void fillTableDoanhThu(){
+        DefaultTableModel model = (DefaultTableModel) tblDoanhThu.getModel();
+        model.setRowCount(0);
+        List<Object[]> list= dao.getDoanhThu();
+        for (Object[] row : list) {
+           model.addRow(row);
+        }
     }
     public void fillTableSanPhamDaBan(){
         DefaultTableModel model = (DefaultTableModel) tblSanPhamDaBan.getModel();
@@ -30,6 +41,22 @@ ThongKeDAO dao = new ThongKeDAO();
            model.addRow(row);
         }
     }
+      public void fillTableSanPhamDaBan2(){
+        DefaultTableModel model = (DefaultTableModel) tblSanPhamDaBan2.getModel();
+        model.setRowCount(0);
+        List<Object[]> list= dao.getSanPhamDaBan();
+        for (Object[] row : list) {
+           model.addRow(row);
+        }
+    }
+     public void fillTableSPTonKho(){
+          DefaultTableModel model1 = (DefaultTableModel) tblSanPhamTonKho.getModel();
+          model1.setRowCount(0);
+          List<Object[]> list= dao.getSanPhamTonKho();
+          for (Object[] row : list) {
+              model1.addRow(row);
+          }
+      }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -111,13 +138,13 @@ ThongKeDAO dao = new ThongKeDAO();
 
         tblSanPhamDaBan2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "MÃ SẢN PHẨM", "TÊN SẢN PHẨM", "ĐÃ BÁN", "DANH MỤC", "TỔNG TIỀN"
+                "MÃ SẢN PHẨM", "TÊN SẢN PHẨM", "DANH MỤC", "TỔNG TIỀN"
             }
         ));
         jScrollPane6.setViewportView(tblSanPhamDaBan2);
@@ -126,21 +153,16 @@ ThongKeDAO dao = new ThongKeDAO();
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel7Layout.createSequentialGroup()
-                    .addGap(3, 3, 3)
-                    .addComponent(jScrollPane6)
-                    .addGap(3, 3, 3)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane6)
+                .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel7Layout.createSequentialGroup()
-                    .addGap(12, 12, 12)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(12, Short.MAX_VALUE)))
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 24, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -167,13 +189,13 @@ ThongKeDAO dao = new ThongKeDAO();
 
         tblSanPhamDaBan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "MÃ SẢN PHẨM", "TÊN SẢN PHẨM", "ĐÃ BÁN", "DANH MỤC", "TỔNG TIỀN"
+                "MÃ SẢN PHẨM", "TÊN SẢN PHẨM", "DANH MỤC", "TỔNG TIỀN"
             }
         ));
         jScrollPane1.setViewportView(tblSanPhamDaBan);
@@ -332,20 +354,16 @@ ThongKeDAO dao = new ThongKeDAO();
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel10))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnNhapLai)
-                        .addGap(38, 38, 38))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnTimKiem)
-                        .addGap(33, 33, 33))))
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel9))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnNhapLai)
+                    .addComponent(btnTimKiem, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(33, 33, 33))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

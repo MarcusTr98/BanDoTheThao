@@ -76,4 +76,49 @@ public class HoaDonChiTietDAO {
             System.out.println("delete that bai"+e);
         }
     }
+        public Float DTDAY(){
+        String sql="select sum(thanhTien) from HoaDonChiTiet hdct\n" +
+"inner join HoaDon hd on hdct.MaHDBan=hd.MaHDBan\n" +
+"where DAY(NgayBan)=GETDATE()" ;
+         Float count=null;
+         try {
+             ResultSet result=XJDBC.query(sql);
+             while(result.next()){
+               count= result.getFloat(1);// lấy bắt đầu từ số đầu tiên
+             }
+         } catch (SQLException e) {
+             System.out.println("Lấy năm không thành công"+e);
+         }
+         return count;
+    }
+        public Float DTMONTH(){
+        String sql="select sum(thanhTien) from HoaDonChiTiet hdct\n" +
+"inner join HoaDon hd on hdct.MaHDBan=hd.MaHDBan\n" +
+"where MONTH(NgayBan)=1" ;
+         Float count=null;
+         try {
+             ResultSet result=XJDBC.query(sql);
+             while(result.next()){
+               count= result.getFloat(1);// lấy bắt đầu từ số đầu tiên
+             }
+         } catch (SQLException e) {
+             System.out.println("Lấy năm không thành công"+e);
+         }
+         return count;
+    }
+        public Float DTYEAR(){
+        String sql="select sum(thanhTien) from HoaDonChiTiet hdct\n" +
+"inner join HoaDon hd on hdct.MaHDBan=hd.MaHDBan\n" +
+"where YEAR(NgayBan)=2021" ;
+         Float count=null;
+         try {
+             ResultSet result=XJDBC.query(sql);
+             while(result.next()){
+               count= result.getFloat(1);// lấy bắt đầu từ số đầu tiên
+             }
+         } catch (SQLException e) {
+             System.out.println("Lấy năm không thành công"+e);
+         }
+         return count;
+    }
 }
