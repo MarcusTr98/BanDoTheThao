@@ -451,7 +451,7 @@ public class NhanVien_Panel extends javax.swing.JPanel {
             }
             insert();
         }else {
-            MsgBox.showMessageDialog(this, "Bạn chưa nhập đầy đủ thông tin!");
+            MsgBox.showMessageDialog(this, "Bạn chưa nhập đầy đủ thông tin!!");
         }
     }//GEN-LAST:event_btnThemActionPerformed
 
