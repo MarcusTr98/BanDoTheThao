@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
-  <NonVisualComponents>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroup1">
-    </Component>
-  </NonVisualComponents>
-  <Properties>
-    <Property name="defaultCloseOperation" type="int" value="2"/>
-  </Properties>
-  <SyntheticProperties>
-    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
-  </SyntheticProperties>
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -27,13 +16,13 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jTabbedPane1" max="32767" attributes="0"/>
+          <Component id="jTabbedPane1" alignment="0" pref="733" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="jTabbedPane1" max="32767" attributes="0"/>
+              <Component id="jTabbedPane1" pref="512" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -65,23 +54,23 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="txtNgayBan" min="-2" pref="176" max="-2" attributes="0"/>
-                                          <Component id="txtMaHD" min="-2" pref="176" max="-2" attributes="0"/>
-                                          <Component id="txtMaNV" min="-2" pref="176" max="-2" attributes="0"/>
-                                          <Component id="txtNgayBan2" min="-2" pref="176" max="-2" attributes="0"/>
+                                          <Component id="txtNgayBan" alignment="0" min="-2" pref="176" max="-2" attributes="0"/>
+                                          <Component id="txtMaHD" alignment="0" min="-2" pref="176" max="-2" attributes="0"/>
+                                          <Component id="txtMaNV" alignment="0" min="-2" pref="176" max="-2" attributes="0"/>
+                                          <Component id="txtNgayBan2" alignment="0" min="-2" pref="176" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -89,8 +78,8 @@
                               </Group>
                               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" attributes="0">
+                                  <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -99,14 +88,14 @@
                                       </Group>
                                       <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="txtTenKH" min="-2" pref="176" max="-2" attributes="0"/>
-                                          <Component id="txtMaKH" min="-2" pref="176" max="-2" attributes="0"/>
-                                          <Component id="txtDiaChi" min="-2" pref="176" max="-2" attributes="0"/>
-                                          <Component id="txtDiaChi1" min="-2" pref="176" max="-2" attributes="0"/>
+                                          <Component id="txtTenKH" alignment="0" min="-2" pref="176" max="-2" attributes="0"/>
+                                          <Component id="txtMaKH" alignment="0" min="-2" pref="176" max="-2" attributes="0"/>
+                                          <Component id="txtDiaChi" alignment="0" min="-2" pref="176" max="-2" attributes="0"/>
+                                          <Component id="txtDiaChi1" alignment="0" min="-2" pref="176" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace min="82" pref="94" max="32767" attributes="0"/>
+                              <EmptySpace min="82" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="btnThem" min="-2" max="-2" attributes="0"/>
@@ -162,7 +151,7 @@
                           <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                               <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -175,18 +164,20 @@
                       <Component id="jScrollPane1" min="-2" pref="210" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="btnThem" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                              <Component id="btnSua" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                              <Component id="btnXoa" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                               <Component id="btnMoi" alignment="1" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                  <Component id="btnThem" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                                  <Component id="btnSua" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                                  <Component id="btnXoa" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <Component id="btnFirst" alignment="1" max="32767" attributes="0"/>
                           <Component id="btnNext" alignment="1" max="32767" attributes="0"/>
                           <Component id="btnPrev" alignment="1" max="32767" attributes="0"/>
                           <Component id="btnLast" alignment="1" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="34" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -423,7 +414,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -432,9 +423,9 @@
                       </Group>
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtTenSP" min="-2" pref="174" max="-2" attributes="0"/>
-                          <Component id="txtMaSP" min="-2" pref="174" max="-2" attributes="0"/>
-                          <Component id="txtMaHoaDonCT" min="-2" pref="174" max="-2" attributes="0"/>
+                          <Component id="txtTenSP" alignment="0" min="-2" pref="174" max="-2" attributes="0"/>
+                          <Component id="txtMaSP" alignment="0" min="-2" pref="174" max="-2" attributes="0"/>
+                          <Component id="txtMaHoaDonCT" alignment="0" min="-2" pref="174" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
@@ -465,7 +456,7 @@
                       <Component id="btnXoaHDCT" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnIn" min="-2" pref="80" max="-2" attributes="0"/>
-                      <EmptySpace pref="97" max="32767" attributes="0"/>
+                      <EmptySpace pref="85" max="32767" attributes="0"/>
                       <Component id="btnFirst1" min="-2" pref="60" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btnPrev1" min="-2" pref="34" max="-2" attributes="0"/>
@@ -481,7 +472,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="txtMaHoaDonCT" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -519,19 +510,19 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="51" max="32767" attributes="0"/>
+                      <EmptySpace pref="23" max="32767" attributes="0"/>
                       <Component id="jScrollPane2" min="-2" pref="271" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                                   <Component id="btnThemHDCT" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnSuaHDCT" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnXoaHDCT" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="btnIn" max="32767" attributes="0"/>
+                              <Component id="btnIn" alignment="0" max="32767" attributes="0"/>
                           </Group>
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                               <Component id="btnFirst1" alignment="1" max="32767" attributes="0"/>
                               <Component id="btnNext1" alignment="1" max="32767" attributes="0"/>
                               <Component id="btnPrev1" alignment="1" max="32767" attributes="0"/>

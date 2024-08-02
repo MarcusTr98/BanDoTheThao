@@ -44,12 +44,28 @@ public class HoaDonDAO {
         return list.get(0);
     }
     public void insert (HoaDonEntity hd){
-       XJDBC.update(insert, hd.getMaHDBan(),hd.getMaNV(),hd.getNgayBan(),hd.getMaKH(),hd.isTinhTrang_ThanhToan());
+        try {
+            XJDBC.update(insert, hd.getMaHDBan(),hd.getMaNV(),hd.getNgayBan(),hd.getMaKH(),hd.isTinhTrang_ThanhToan());
+            System.out.println("insert thanh cong");
+        } catch (Exception e) {
+            System.out.println("insert that bai"+e);
+        }
+      
     }
     public void update(HoaDonEntity hd){
-        XJDBC.update(update,hd.getMaNV(),hd.getNgayBan(),hd.getMaKH(),hd.isTinhTrang_ThanhToan(), hd.getMaHDBan());
+        try {
+                    XJDBC.update(update,hd.getMaNV(),hd.getNgayBan(),hd.getMaKH(),hd.isTinhTrang_ThanhToan(), hd.getMaHDBan());
+                    System.out.println("update thanh cong");
+        } catch (Exception e) {
+            System.out.println("update that bai"+e);
+        }
     }
     public void delete(String maHD){
-        XJDBC.update(delete, maHD);
+        try {
+                    XJDBC.update(delete, maHD);
+                    System.out.println("delete thanh cong");
+        } catch (Exception e) {
+            System.out.println("delete that bai"+e);
+        }
     }
 }
