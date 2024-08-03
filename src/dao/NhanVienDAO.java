@@ -71,7 +71,7 @@ public class NhanVienDAO extends storeDAO<NhanVienEntity, String> {
                 rs = XJDBC.query(sql, args);
                 while(rs.next()){
                     NhanVienEntity nv = new NhanVienEntity();
-                    nv.setMaNV(rs.getInt("MaNV"));
+                    nv.setMaNV(rs.getString("MaNV"));
                     nv.setTenNV(rs.getString("TenNV"));
                     nv.setGioiTinh(rs.getBoolean("GioiTinh"));
                     nv.setDiaChi(rs.getString("DiaChi"));
