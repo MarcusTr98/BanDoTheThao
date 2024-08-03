@@ -5,6 +5,8 @@
 package view;
 import dao.*;
 import entity.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.util.*;
 import javax.swing.DefaultComboBoxModel;
@@ -26,10 +28,10 @@ HoaDonChiTietEntity hdE=new HoaDonChiTietEntity();
         super(parent, modal);
         initComponents();
         fillComboBoxNam();
-//        fillTableDoanhThu();
         fillTableSPDaBan();
         fillTableSPTonKho();
         donHangAndDoanhThu();
+        text();
 // bảng doanh thu
     }
       public void fillTableDoanhThu(){
@@ -42,6 +44,15 @@ HoaDonChiTietEntity hdE=new HoaDonChiTietEntity();
           }
           
     }
+            public void text(){
+    cboNam.addActionListener(new ActionListener(){
+        @Override
+           public void actionPerformed(ActionEvent e) {
+                fillTableDoanhThu(); // Cập nhật bảng doanh thu
+            }
+    });
+     fillTableDoanhThu();// hiển thị bảng doanh thu
+}
       // bảng sản phẩm đã bán
       public void fillTableSPDaBan(){
           DefaultTableModel model = (DefaultTableModel) tblSanPhamDaBan.getModel();
@@ -437,7 +448,8 @@ HoaDonChiTietEntity hdE=new HoaDonChiTietEntity();
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addComponent(jTabbedPane1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44)
@@ -447,7 +459,6 @@ HoaDonChiTietEntity hdE=new HoaDonChiTietEntity();
                 .addGap(27, 27, 27)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35))
-            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

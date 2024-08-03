@@ -31,12 +31,12 @@ public class ThongKeDAO {
         }
     }
        public List<Object[]> getSanPhamDaBan(){
-          String sql="sp_sanphamdaban";
+          String sql="{CALL sp_sanphamdaban}";
           String [] cols={"MaSP","TenSP","tenDM","tongTien"};
           return this.getListOfArray(sql, cols);
       }
          public List<Object[]> getSanPhamTonKho(){
-          String sql="sp_sanphamtonkho";
+          String sql="{CALL sp_sanphamtonkho}";
           String [] cols={"MaSP","TenSP","SoLuongTonKho","tenDM","TongTien"};
           return this.getListOfArray(sql, cols);
       }
@@ -46,9 +46,18 @@ public class ThongKeDAO {
          return this.getListOfArray(sql, cols);
      }
       public List<Object[]> getDoanhThuNam(int nam){
-         String sql="sp_doanhthunam(?)";
+         String sql="{CALL sp_doanhthunam(?)}";
          String [] cols={"SoHD","MaSP","doanhThu","thapNhat","caoNhat","trungBinh"};
          return this.getListOfArray(sql, cols, nam);
      }
-     
+     public List<Object[]> getNhanVienCoDon(){
+         String sql= "{CALL sp_nhanviencodon}";
+         String [] cols={"MaNV","TenNV","SOHD","SOSP","TongTien"};
+         return this.getListOfArray(sql, cols);
+     }
+     public List<Object[]> getChiTiet(){
+         String sql= "{CALL sp_chitiet}";
+         String [] cols={"MaHDBan","soLuongSP","MaNV","TenNV","NgayBan","TongTien"};
+         return this.getListOfArray(sql, cols);
+     }
 }
