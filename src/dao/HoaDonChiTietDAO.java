@@ -20,8 +20,8 @@ public class HoaDonChiTietDAO {
 "from hoaDonChiTiet hdct inner join sanpham sp on sp.maSP=hdct.maSP";
         String selectById="select MaHDCT,MaHDBan,hdct.maSP,sp.TenSP,hdct.soLuong,giamGia,((hdct.soLuong*sp.GiaBan)-GiamGia) as ThanhTien\n" +
 "from hoaDonChiTiet hdct inner join sanpham sp on sp.maSP=hdct.maSP WHERE MaHDCT=?";
-    String insert="insert into HoaDonChiTiet (MaHDBan,MaSP,soLuong,giamGia) values (?,?,?,?)";
-    String update="update HoaDonChiTiet set MaHDBan=?,MaSP=?,SoLuong=?,GiamGia=? where MaHDCT=?";
+    String insert="insert into HoaDonChiTiet (MaHDBan,MaSP,soLuong,giamGia,thanhTien) values (?,?,?,?,?)";
+    String update="update HoaDonChiTiet set MaHDBan=?,MaSP=?,SoLuong=?,GiamGia=?,thanhTien=? where MaHDCT=?";
     String delete ="delete from HoaDonChiTiet where MaHDCT=?";
     public List<HoaDonChiTietEntity> selectBySql(String sql,Object...args){
         List<HoaDonChiTietEntity> list= new ArrayList<>();
@@ -53,7 +53,7 @@ public class HoaDonChiTietDAO {
     }
     public void insert (HoaDonChiTietEntity hdct){
         try {
-                   XJDBC.update(insert,hdct.getMaHDBan(),hdct.getMaSP(),hdct.getSoLuong(),hdct.getGiamGia() );
+                   XJDBC.update(insert,hdct.getMaHDBan(),hdct.getMaSP(),hdct.getSoLuong(),hdct.getGiamGia(),hdct.getThanhTien() );
                    System.out.println("insert thanh cong");
         } catch (Exception e) {
             System.out.println("insert that bai"+e);
@@ -62,7 +62,7 @@ public class HoaDonChiTietDAO {
     public void update(HoaDonChiTietEntity hdct){
         try {
                     XJDBC.update(update,hdct.getMaHDBan(),hdct.getMaSP(),hdct.getSoLuong(),
-                            hdct.getGiamGia(),hdct.getMaHDCT());
+                            hdct.getGiamGia(),hdct.getThanhTien(),hdct.getMaHDCT());
                     System.out.println("update thanh cong");
         } catch (Exception e) {
             System.out.println("update that bai"+e);

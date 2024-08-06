@@ -104,4 +104,18 @@ public class SanPhamDAO extends storeDAO<SanPhamEntity, String> {
         String sql = "SELECT * FROM SanPham WHERE tenSP LIKE ?";
         return this.selectBySql(sql, "%" + keyword + "%");
     }
+        public Float giaTien(String maSP){
+         String sql="select GiaBan from SanPham where MaSP=?" ;
+         Float count=null;
+         try {
+             ResultSet result=XJDBC.query(sql, maSP);
+             
+             while(result.next()){
+               count= result.getFloat(1);// lấy bắt đầu từ số đầu tiên
+             }
+         } catch (SQLException e) {
+             System.out.println("Lấy năm không thành công"+e);
+         }
+         return count;
+    } 
 }
